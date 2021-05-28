@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="product_template_only_form_view_inherit_academy">
+            <field name="name">product.template.product.form.inherit.academy</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+<!--             the ref product inherit_id is the default root -->
+
+            <field name="arch" type="xml">
+<!--                 use field element locator to locate barcode, comparing sale_view_inherit.xml's xpath -->
+                <field name="barcode" position="after">
+                    <field name="is_session_product"/>
+                </field>
+            </field>
+            
+        </record>     
+    </data>
+</odoo>

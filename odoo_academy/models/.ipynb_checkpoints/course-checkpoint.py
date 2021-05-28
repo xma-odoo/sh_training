@@ -6,11 +6,14 @@ from odoo.exceptions import UserError, ValidationError
 
 class Course(models.Model):
     
-    _name = 'academy.course'
+    _name = 'academy.course' 
     _description = 'Course Info'
     
-    name = fields.Char(string='Title', required=True)
+    #attributes 
+    
+    name = fields.Char(string='Title', required=True) # field label(user visible name) is a capitalized version of the field name, string overrides it
     description = fields.Text(string='Description')
+    #test = fields.Text(string='Test', default="test1")
     
     level = fields.Selection(string='Level', 
                              selection=[('beginner', 'Beginner'),

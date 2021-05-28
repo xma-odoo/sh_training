@@ -3,7 +3,7 @@
 <odoo>
     <data>
         <record model="ir.ui.view" id="session_view_form">
-            <field name="name">academ.session.form</field>
+            <field name="name">academy.session.form</field>
             <field name="model">academy.session</field>
             <field name="arch" type="xml">
                 <form string="Session Form">
@@ -12,9 +12,12 @@
                         <group>
                             <group>
                                 <field name="course_id"/>
+                                <field name="instructor_id"/>
                             </group>
                             <group>
-                                <field name="instructor_id"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                                <field name="duration"/> 
                             </group>
                         </group>
                         <notebook>
@@ -39,17 +42,21 @@
             </field>
         </record>
         
-        <record model="ir.ui.view" id="course_view_search">
-            <field name="name">academy.course.search</field>
-            <field name="model">academy.course</field>
+         <record model="ir.ui.view" id="session_view_calendar">
+            <field name="name">academy.course.calendar</field>
+            <field name="model">academy.session</field>
             <field name="arch" type="xml">
-                <search>
+                <calendar string="Session Calendar"
+                          date_start="date_start"
+                          date_stop="date_end"
+                          color="instructor_id"
+                          mode="month">
                     <field name="name"/>
-                    <field name="description"/>
-                    <field name="level"/>
-                </search>
+                    <field name="instructor_id" avatar_field="image_128"/>
+                </calendar>
             </field>
         </record>
+       
         
     </data>
 </odoo>
