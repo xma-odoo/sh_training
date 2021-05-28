@@ -10,7 +10,7 @@
                     <group>
                         <field name="session_id"/>
                         <field name="session_student_ids" invisible="1"/>
-                        <field name="student_ids" domain="[('id','in',session_student_ids)]"/>
+                        <field name="student_ids" invisible="1" domain="[('id','in',session_student_ids)]"/>
                     </group>
                     <footer>
                         <button name="create_sale_orders" type="object" string="Create"
@@ -22,12 +22,11 @@
             </field>
         </record>  
         
-        <record id="launch_sale_wizard" model="ir.actions.act_window">
-            <field name="name">Create Sale Order</field>
-            <field name="res_model">academy.sale.wizard</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-            <field name="binding_model_id" ref="model_academy_session"/>
-        </record>
+        <act_window id="launch_sale_wizard"
+                    name="Create Sale Order"
+                    binding_model="academy.session"
+                    res_model="academy.sale.wizard"
+                    view_model="form"
+                    target="new"/>
     </data>
 </odoo>
