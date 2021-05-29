@@ -8,7 +8,7 @@ class SaleWizard(models.TransientModel):
     
     # don't understand
     def _default_session(self):
-        return rels.env['academy.session'].browse(self._context.get('active_id'))
+        return self.env['academy.session'].browse(self._context.get('active_id'))
     
     session_id = fields.Many2one(comodel_name='academy.session',
                                 string='Session',
@@ -30,7 +30,7 @@ class SaleWizard(models.TransientModel):
             for student in self.student_ids:
                 order_id = self.env['sale.order'].create({
                     'partner_id': student.id,
-                    'session_id': self.session.id,
+                    'session_id': self.session_id,
                     'order_line':[(0, 0, {'product_id' : session_product_id.id,
                                          'price_unit': self.session_id.total_price})]
                 })
